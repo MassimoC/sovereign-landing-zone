@@ -21,7 +21,8 @@
         "type": "array",
         "defaultValue": [],
         "allowedValues": [
-          "asia",
+          "italynorth",
+		  "asia",
           "asiapacific",
           "australia",
           "australiacentral",

@@ -22,6 +22,7 @@ param parDeploymentSuffix string = ''
 
 @description('Deployment location')
 @allowed([
+  'italynorth'
   'asia'
   'asiapacific'
   'australia'
