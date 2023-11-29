@@ -87,7 +87,6 @@ param parVirtualNetworkIdToLink string = ''
 param parTelemetryOptOut bool = false
 
 var varAzBackupGeoCodes = {
-  italynorth: 'itn'
   australiacentral: 'acl'
   australiacentral2: 'acl2'
   australiaeast: 'ae'

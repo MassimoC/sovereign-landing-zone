@@ -22,86 +22,60 @@ param parDeploymentSuffix string = ''
 
 @description('Deployment location')
 @allowed([
-  'italynorth'
-  'asia'
-  'asiapacific'
-  'australia'
   'australiacentral'
   'australiacentral2'
   'australiaeast'
   'australiasoutheast'
-  'brazil'
   'brazilsouth'
   'brazilsoutheast'
-  'canada'
+  'brazilus'
   'canadacentral'
   'canadaeast'
   'centralindia'
   'centralus'
   'centraluseuap'
-  'centralusstage'
   'eastasia'
-  'eastasiastage'
   'eastus'
   'eastus2'
   'eastus2euap'
-  'eastus2stage'
-  'eastusstage'
   'eastusstg'
-  'europe'
-  'france'
   'francecentral'
   'francesouth'
-  'germany'
   'germanynorth'
   'germanywestcentral'
-  'global'
-  'india'
-  'japan'
+  'israelcentral'
+  'italynorth'
   'japaneast'
   'japanwest'
   'jioindiacentral'
   'jioindiawest'
-  'korea'
   'koreacentral'
   'koreasouth'
   'northcentralus'
-  'northcentralusstage'
   'northeurope'
-  'norway'
   'norwayeast'
   'norwaywest'
+  'polandcentral'
   'qatarcentral'
-  'singapore'
-  'southafrica'
   'southafricanorth'
   'southafricawest'
   'southcentralus'
-  'southcentralusstage'
   'southcentralusstg'
   'southeastasia'
-  'southeastasiastage'
   'southindia'
   'swedencentral'
-  'switzerland'
   'switzerlandnorth'
   'switzerlandwest'
-  'uae'
   'uaecentral'
   'uaenorth'
-  'uk'
   'uksouth'
   'ukwest'
-  'unitedstates'
-  'unitedstateseuap'
   'westcentralus'
   'westeurope'
   'westindia'
   'westus'
   'westus2'
-  'westus2stage'
   'westus3'
-  'westusstage'
 ])
 param parDeploymentLocation string
 
@@ -154,7 +128,7 @@ param parSubnets array = [
 ]
 
 @description('The SKU for the Express Route Gateway. Default: standard')
-param parExpressGatewaySku string = 'standard'
+param parExpressGatewaySku string = ''
 
 @description('Express route gateway vpn type. Default:RouteBased')
 param parExpressGatewayVpntype string = 'RouteBased'
@@ -184,7 +158,7 @@ param parExpressGatewayBgpPeeringAddress string = ''
 param parExpressGatewayPeerWeight int = 5
 
 @description('The SKU for the VPN Gateway. Default:VpnGw1')
-param parVpnGatewaySku string = 'VpnGw1'
+param parVpnGatewaySku string = ''
 
 @description('VPN type.  Default: RouteBased')
 param parVpnGatewayVpntype string = 'RouteBased'
@@ -448,8 +422,8 @@ module modHubNetworking '../../dependencies/infra-as-code/bicep/modules/hubNetwo
 output outConnectivitySubscriptionId string = parConnectivitySubscriptionId
 output outDeploymentLocation string = parDeploymentLocation
 output outDeploymentPrefix string = parDeploymentPrefix
-output outDdosProtectionResourceId string = parDeployHubNetwork ? modHubNetworking.outputs.outDdosPlanResourceId : ''
-output outLogAnalyticsWorkspaceId string = modLogging.outputs.outLogAnalyticsWorkspaceId
-output outAutomationAccountName string = modLogging.outputs.outAutomationAccountName
+output outDdosProtectionResourceId string = parDeployHubNetwork && parDeployDdosProtection ? modHubNetworking.outputs.outDdosPlanResourceId : ''
+output outLogAnalyticsWorkspaceId string = parDeployLogAnalyticsWorkspace ? modLogging.outputs.outLogAnalyticsWorkspaceId : ''
+output outAutomationAccountName string = parDeployLogAnalyticsWorkspace ? modLogging.outputs.outAutomationAccountName : ''
 output outPrivateDNSZones array = parDeployHubNetwork ? modHubNetworking.outputs.outPrivateDnsZones : []
 output outHubVirtualNetworkId string = parDeployHubNetwork ? modHubNetworking.outputs.outHubVirtualNetworkId : ''

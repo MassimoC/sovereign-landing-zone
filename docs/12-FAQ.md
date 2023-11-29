@@ -22,8 +22,6 @@ The specific steps vary depending on the Azure Account type you are using. For m
 
 ### Why do I need elevated permissions to deploy the Sovereign Landing Zone Preview?
 
-**Note** the reduced permission set listed below is pending completion this feature. Documentation is being left as-is to show the current direction. When the feature is finished, this note will be removed and it will be listed in the release notes. For the time being, Global Administrator with elevated Azure permissions are required.
-
 This permission is no longer needed, but can be useful for organizations that are getting started with Azure. For more details about permissions review the docs on the [current recommended permissions](./05-Permissions-Tooling.md) or [reduced permission sets required](./scenarios/Piloting-SLZ.md).
 
 ### Why do I get an error when I try to login using `az login` about no subscriptions?
@@ -36,11 +34,11 @@ Elevating permissions is no longer required, but it may be useful for organizati
 
 If elevating permissions is the preferred route for your organization, you may get an error such as:
 
-![AccessError](images/deployerror-vscode.png)
+![AccessError](images/elevate-permissions-error.png)
 
 Navigate to the Azure Active Directory Properties screen and ensure `Access management for Azure resources` is set to `Yes`.
 
-![AzurePermissions](images/access-permissions.png)
+![AzurePermissions](images/access-management-permissions.png)
 
 ### Why am I still getting an error about permissions even after my permissions have been elevated?
 
@@ -174,7 +172,7 @@ While it's recommended to wait for Azure to automatically clean up the deploymen
       }
     }
 
-    #fetch resourcegroups under the subscriptions and for each resource groups get the deployments name and delete the corresponding deployment from deployment history
+    #fetch resource groups under the subscriptions and for each resource groups get the deployments name and delete the corresponding deployment from deployment history
     $subscriptions | ForEach-Object {
       Set-AzContext -SubscriptionName $_.DisplayName
       Get-AzResourceGroup | ForEach-Object {
