@@ -4,7 +4,7 @@
   "parameters": {
     "parDeploymentPrefix": {
       "type": "string",
-      "usedBy": "all, bootstrap, compliance, platform, and dashboard",
+      "usedBy": "all, bootstrap, compliance, platform, and dashboard, MMCR1",
       "minLength": 2,
       "maxLength": 5,
       "defaultValue": "mcfs",
@@ -28,31 +28,31 @@
     },
     "parTopLevelManagementGroupParentId": {
       "type": "string",
-      "usedBy": "all and bootstrap",
+      "usedBy": "all and bootstrap, MMCR1",
       "sampleValue": "/providers/Microsoft.Management/managementGroups/replace_with_parent_management_group_id",
       "defaultValue": null,
-      "value": null,
+      "value": "/providers/Microsoft.Management/managementGroups/mg-slz",
       "description": "Optional parent for Management Group hierarchy, used as intermediate root Management Group parent, if specified. If empty (default) will deploy beneath Tenant Root Management Group."
     },
     "parSubscriptionBillingScope": {
       "type": "string",
-      "usedBy": "all and bootstrap",
+      "usedBy": "all and bootstrap, MMCR1",
       "sampleValue": "Format for EA - /providers/Microsoft.Billing/BillingAccounts/{BillingAccountId}/enrollmentAccounts/{EnrollmentAccountId}",
       "defaultValue": null,
-      "value": null,
+      "value": "/billing-scope-not-used",
       "description": "The full resource ID of billing scope associated to the EA, MCA or MPA account you wish to create the subscription in."
     },
     "parCustomer": {
       "type": "string",
       "usedBy": "all and dashboard",
-      "defaultValue": "Country/Region",
+      "defaultValue": "Codit/Europe",
       "value": null,
       "description": "The name of the organization deploying the SLZ Preview to brand the compliance dashboard appropriately."
     },
     "parDeploymentLocation": {
       "type": "string",
-      "usedBy": "all, platform, and dashboard",
-      "defaultValue": null,
+      "usedBy": "all, platform, and dashboard, MMCR1",
+      "defaultValue": "francecentral",
       "value": null,
       "allowedValues": [
         "australiacentral",
@@ -114,9 +114,14 @@
     },
     "parAllowedLocations": {
       "type": "array",
-      "usedBy": "all and compliance",
+      "usedBy": "all and compliance, MMCR1",
       "defaultValue": [],
-      "value": [],
+      "value": [
+        "francecentral",
+        "italynorth",
+        "northeurope",
+        "westeurope"
+      ],
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
@@ -177,9 +182,14 @@
     },
     "parAllowedLocationsForConfidentialComputing": {
       "type": "array",
-      "usedBy": "all and compliance",
+      "usedBy": "all and compliance, MMCR1",
       "defaultValue": [],
-      "value": [],
+      "value": [
+        "francecentral",
+        "italynorth",
+        "northeurope",
+        "westeurope"
+      ],
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
@@ -240,29 +250,29 @@
     },
     "parDeployDdosProtection": {
       "type": "bool",
-      "usedBy": "all, platform and compliance",
-      "defaultValue": true,
+      "usedBy": "all, platform and compliance, MMCR2",
+      "defaultValue": false,
       "value": null,
       "description": "Toggles deployment of Azure DDOS protection. True to deploy, otherwise false."
     },
     "parDeployHubNetwork": {
       "type": "bool",
-      "usedBy": "all and platform",
+      "usedBy": "all and platform, MMCR2",
       "defaultValue": true,
       "value": null,
       "description": "Toggles deployment of the hub VNET. True to deploy, otherwise false."
     },
     "parEnableFirewall": {
       "type": "bool",
-      "usedBy": "all and platform",
+      "usedBy": "all and platform, MMCR2",
       "defaultValue": true,
       "value": null,
       "description": "Toggles deployment of Azure Firewall. True to deploy, otherwise false."
     },
     "parUsePremiumFirewall": {
       "type": "bool",
-      "usedBy": "all and platform",
-      "defaultValue": true,
+      "usedBy": "all and platform, MMCR2",
+      "defaultValue": false,
       "value": null,
       "description": "Toggles deployment of the Premium SKU for Azure Firewall and only used if parEnableFirewall is enabled. True to use Premium SKU, otherwise false."
     },
@@ -322,23 +332,23 @@
     },
     "parManagementSubscriptionId": {
       "type": "string",
-      "usedBy": "bootstrap, platform and dashboard",
+      "usedBy": "bootstrap, platform and dashboard, MMCR1",
       "defaultValue": null,
-      "value": null,
+      "value": "2f29eaca-245b-4fd3-80ad-43f4e1b34d59",
       "description": "Optional management subscription ID when using an existing subscription."
     },
     "parIdentitySubscriptionId": {
       "type": "string",
-      "usedBy": "bootstrap and platform",
+      "usedBy": "bootstrap and platform, MMCR1",
       "defaultValue": null,
-      "value": null,
+      "value": "2f29eaca-245b-4fd3-80ad-43f4e1b34d59",
       "description": "Optional identity subscription ID when using an existing subscription."
     },
     "parConnectivitySubscriptionId": {
       "type": "string",
-      "usedBy": "bootstrap and platform",
+      "usedBy": "bootstrap and platform, MMCR1",
       "defaultValue": null,
-      "value": null,
+      "value": "2f29eaca-245b-4fd3-80ad-43f4e1b34d59",
       "description": "Optional connectivity subscription ID when using an existing subscription."
     },
     "parDdosProtectionResourceId": {
@@ -350,9 +360,9 @@
     },
     "parLogAnalyticsWorkspaceId": {
       "type": "string",
-      "usedBy": "compliance",
+      "usedBy": "compliance, MMCR3",
       "defaultValue": null,
-      "value": null,
+      "value": "/subscriptions/2f29eaca-245b-4fd3-80ad-43f4e1b34d59/resourceGroups/mcfs-rg-logging-francecentral/providers/Microsoft.OperationalInsights/workspaces/mcfs-log-analytics-francecentral",
       "description": "Optional resource ID for an existing Log Analytics Workspace with usage enforced by ALZ policies."
     },
     "parRequireOwnerRolePermission": {
@@ -418,9 +428,9 @@
     },
     "parDeployBastion": {
       "type": "bool",
-      "usedBy": "all and platform",
+      "usedBy": "all and platform, MMCR2",
       "defaultValue": true,
-      "value": null,
+      "value": false,
       "description": "Toggles deployment of Azure Bastion. True to deploy, otherwise false."
     },
     "parLandingZoneMgChildren": {
@@ -449,16 +459,16 @@
     },
     "parAutomationAccountName": {
       "type": "string",
-      "usedBy": "all and compliance",
+      "usedBy": "all and compliance, MMCR3",
       "defaultValue": null,
-      "value": null,
+      "value": "mcfs-automation-account-francecentral",
       "description": "Optional resource name for an existing Azure Automation account with usage enforced by ALZ policies."
     },
     "parPrivateDnsResourceGroupId": {
       "type": "string",
-      "usedBy": "all and compliance",
+      "usedBy": "all and compliance, MMCR3",
       "defaultValue": null,
-      "value": null,
+      "value": "/subscriptions/2f29eaca-245b-4fd3-80ad-43f4e1b34d59/resourceGroups/mcfs-rg-hub-network-francecentral",
       "description": "Optional resource ID of the Azure Resource Group that contains the Private DNS Zones with usage enforced by ALZ policies."
     },
     "parMsDefenderForCloudEmailSecurityContact": {
@@ -484,8 +494,8 @@
     },
     "parInvokePolicyRemediationSync": {
       "type": "bool",
-      "usedBy": "all and compliance",
-      "defaultValue": true,
+      "usedBy": "all and compliance, MMCR3",
+      "defaultValue": false,
       "value": null,
       "description": "Toggles executing the policy scan in synchronous mode. True to run policy remediation in synchronous mode, False for asynchronous."
     },
