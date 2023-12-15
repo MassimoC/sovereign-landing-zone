@@ -52,7 +52,7 @@
     "parDeploymentLocation": {
       "type": "string",
       "usedBy": "all, platform, and dashboard, MMCR1",
-      "defaultValue": "francecentral",
+      "defaultValue": "italynorth",
       "value": null,
       "allowedValues": [
         "australiacentral",
@@ -362,7 +362,7 @@
       "type": "string",
       "usedBy": "compliance, MMCR3",
       "defaultValue": null,
-      "value": "/subscriptions/2f29eaca-245b-4fd3-80ad-43f4e1b34d59/resourceGroups/mcfs-rg-logging-francecentral/providers/Microsoft.OperationalInsights/workspaces/mcfs-log-analytics-francecentral",
+      "value": "/subscriptions/2f29eaca-245b-4fd3-80ad-43f4e1b34d59/resourceGroups/mcfs-rg-logging-italynorth/providers/Microsoft.OperationalInsights/workspaces/mcfs-log-analytics-italynorth",
       "description": "Optional resource ID for an existing Log Analytics Workspace with usage enforced by ALZ policies."
     },
     "parRequireOwnerRolePermission": {
@@ -461,14 +461,14 @@
       "type": "string",
       "usedBy": "all and compliance, MMCR3",
       "defaultValue": null,
-      "value": "mcfs-automation-account-francecentral",
+      "value": "mcfs-automation-account-italynorth",
       "description": "Optional resource name for an existing Azure Automation account with usage enforced by ALZ policies."
     },
     "parPrivateDnsResourceGroupId": {
       "type": "string",
       "usedBy": "all and compliance, MMCR3",
       "defaultValue": null,
-      "value": "/subscriptions/2f29eaca-245b-4fd3-80ad-43f4e1b34d59/resourceGroups/mcfs-rg-hub-network-francecentral",
+      "value": "/subscriptions/2f29eaca-245b-4fd3-80ad-43f4e1b34d59/resourceGroups/mcfs-rg-hub-network-italynorth",
       "description": "Optional resource ID of the Azure Resource Group that contains the Private DNS Zones with usage enforced by ALZ policies."
     },
     "parMsDefenderForCloudEmailSecurityContact": {
