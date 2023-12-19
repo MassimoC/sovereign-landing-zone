@@ -32,7 +32,9 @@ function Invoke-PolicyExemption {
         return
     }
 
-    Confirm-Parameters($varPolicyExemptionRequiredParams)
+    # MMCR
+    #Write-Information "---------------****-----------------------"  -InformationAction Continue
+    #Confirm-Parameters($varPolicyExemptionRequiredParams)
     $varPolicyExemptions = $parParameters.parPolicyExemptions.value
     foreach ($varPolicyExemption in $varPolicyExemptions) {
         New-Exemption $varPolicyExemption

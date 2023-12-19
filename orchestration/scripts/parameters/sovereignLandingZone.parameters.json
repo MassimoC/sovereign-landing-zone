@@ -382,7 +382,17 @@
         }
       ],
       "defaultValue": [],
-      "value": [],
+      "value": [
+        {
+          "parPolicyExemptionManagementGroup": "mcfs",
+          "parPolicyAssignmentName": "Deploy-Resource-Diag",
+          "parPolicyAssignmentScopeName": "mcfs",
+          "parPolicyDefinitionReferenceIds": ["NetworkPublicIPNicDeployDiagnosticLogDeployLogAnalytics"],
+          "parPolicyExemptionName": "MCFS - Deploy-Resource-Diag - PIP DDoS",
+          "parPolicyExemptionDisplayName": "DDoS standard for Public IP - DINE exemption",
+          "parPolicyExemptionDescription": "DDoS standard for Public IP - DINE exemption"
+        }
+      ],
       "description": "Optional list of policy exemptions."
     },
     "parExpressRouteGatewayConfig": {

@@ -28,7 +28,6 @@ if ($parDeployment -notin $varDeploy) {
 }
 Write-Information ">>> If you are running this deployment in admin mode and left mouse click in the PowerShell window, a text selection rectangle will appear and deployment will halt. Press the Enter key to continue the deployment." -InformationAction Continue
 
-
 #reference to individual scripts
 . ".\Invoke-Helper.ps1"
 . ".\New-Bootstrap.ps1" -parAttendedLogin $parAttendedLogin
@@ -54,7 +53,6 @@ if ($parAttendedLogin) {
     # Confirm Sovereign Landing Zone Prerequisites
     Confirm-Prerequisites $parIsSLZDeployedAtTenantRoot
 }
-
 $vartimeStamp = Get-Date -Format "yyyyMMddHHmmss"
 $varParameters.add('parDeploymentStartTime', $vartimeStamp)
 switch ($parDeployment) {
